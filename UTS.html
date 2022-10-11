@@ -369,7 +369,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-b9ecc0d6-9279-4cc3-ad34-e1147d5aff50">
+  <div id="df-c959221d-de38-40fe-9824-99e02dcd66f1">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -535,7 +535,7 @@ title="Print to PDF"
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-b9ecc0d6-9279-4cc3-ad34-e1147d5aff50')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c959221d-de38-40fe-9824-99e02dcd66f1')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -586,12 +586,12 @@ title="Print to PDF"
 
       <script>
         const buttonEl =
-          document.querySelector('#df-b9ecc0d6-9279-4cc3-ad34-e1147d5aff50 button.colab-df-convert');
+          document.querySelector('#df-c959221d-de38-40fe-9824-99e02dcd66f1 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-b9ecc0d6-9279-4cc3-ad34-e1147d5aff50');
+          const element = document.querySelector('#df-c959221d-de38-40fe-9824-99e02dcd66f1');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -796,6 +796,88 @@ cv_scores mean:0.5173913043478261
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5688405797101449
 </pre></div>
 </div>
+</div>
+</div>
+<p>#Metode pohon keputusan (Desision tree)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">import</span> <span class="nn">pydotplus</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">pltimg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span><span class="s1">&#39;BMI&#39;</span><span class="p">,</span><span class="s1">&#39;Glucose&#39;</span><span class="p">,</span><span class="s1">&#39;Insulin&#39;</span><span class="p">,</span><span class="s1">&#39;HOMA&#39;</span><span class="p">,</span><span class="s1">&#39;Leptin&#39;</span><span class="p">,</span><span class="s1">&#39;Adiponectin&#39;</span><span class="p">,</span><span class="s1">&#39;Resistin&#39;</span><span class="p">,</span><span class="s1">&#39;MCP.1&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Classification&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Age        BMI  Glucose  Insulin      HOMA   Leptin  Adiponectin  \
+0     48  23.500000       70    2.707  0.467409   8.8071     9.702400   
+1     83  20.690495       92    3.115  0.706897   8.8438     5.429285   
+2     82  23.124670       91    4.498  1.009651  17.9393    22.432040   
+3     68  21.367521       77    3.226  0.612725   9.8827     7.169560   
+4     86  21.111111       92    3.549  0.805386   6.6994     4.819240   
+..   ...        ...      ...      ...       ...      ...          ...   
+111   45  26.850000       92    3.330  0.755688  54.6800    12.100000   
+112   62  26.840000      100    4.530  1.117400  12.4500    21.420000   
+113   65  32.050000       97    5.730  1.370998  61.4800    22.540000   
+114   72  25.590000       82    2.820  0.570392  24.9600    33.750000   
+115   86  27.180000      138   19.910  6.777364  90.2800    14.110000   
+
+     Resistin    MCP.1  
+0     7.99585  417.114  
+1     4.06405  468.786  
+2     9.27715  554.697  
+3    12.76600  928.220  
+4    10.57635  773.920  
+..        ...      ...  
+111  10.96000  268.230  
+112   7.32000  330.160  
+113  10.33000  314.050  
+114   3.27000  392.460  
+115   4.35000   90.090  
+
+[116 rows x 9 columns] 0      1
+1      1
+2      1
+3      1
+4      1
+      ..
+111    2
+112    2
+113    2
+114    2
+115    2
+Name: Classification, Length: 116, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">dtree</span> <span class="o">=</span> <span class="n">dtree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">export_graphviz</span><span class="p">(</span><span class="n">dtree</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">pydotplus</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">write_png</span><span class="p">(</span><span class="s1">&#39;mydecisiontree.png&#39;</span><span class="p">)</span>
+
+<span class="n">img</span><span class="o">=</span><span class="n">pltimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;mydecisiontree.png&#39;</span><span class="p">)</span>
+<span class="n">imgplot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/UTS_20_0.png" src="_images/UTS_20_0.png" />
 </div>
 </div>
 </section>
