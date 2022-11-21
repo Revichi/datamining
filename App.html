@@ -1,0 +1,4470 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Penambangan Data &#8212; Data Mining</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Mining</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tugas%202.html">
+   Tugas 2
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/gh-pages/_sources/App.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FApp.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/App.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Penambangan Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="penambangan-data">
+<h1>Penambangan Data<a class="headerlink" href="#penambangan-data" title="Permalink to this headline">#</a></h1>
+<p>Dataset Brain Tumor</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">KeyboardInterrupt</span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">d5df0069828e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/google/colab/drive.py</span> in <span class="ni">mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>       <span class="n">timeout_ms</span><span class="o">=</span><span class="n">timeout_ms</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>       <span class="n">ephemeral</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">106</span>       <span class="n">readonly</span><span class="o">=</span><span class="n">readonly</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> 
+<span class="g g-Whitespace">    </span><span class="mi">108</span> 
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/google/colab/drive.py</span> in <span class="ni">_mount</span><span class="nt">(mountpoint, force_remount, timeout_ms, ephemeral, readonly)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>   <span class="k">if</span> <span class="n">ephemeral</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>     <span class="n">_message</span><span class="o">.</span><span class="n">blocking_request</span><span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">125</span>         <span class="s1">&#39;request_auth&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;authType&#39;</span><span class="p">:</span> <span class="s1">&#39;dfs_ephemeral&#39;</span><span class="p">},</span> <span class="n">timeout_sec</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span> 
+<span class="g g-Whitespace">    </span><span class="mi">127</span>   <span class="n">mountpoint</span> <span class="o">=</span> <span class="n">_os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">mountpoint</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/google/colab/_message.py</span> in <span class="ni">blocking_request</span><span class="nt">(request_type, request, timeout_sec, parent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>   <span class="n">request_id</span> <span class="o">=</span> <span class="n">send_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>       <span class="n">request_type</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">expect_reply</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">171</span>   <span class="k">return</span> <span class="n">read_reply_from_input</span><span class="p">(</span><span class="n">request_id</span><span class="p">,</span> <span class="n">timeout_sec</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/google/colab/_message.py</span> in <span class="ni">read_reply_from_input</span><span class="nt">(message_id, timeout_sec)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="n">reply</span> <span class="o">=</span> <span class="n">_read_next_input_message</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="k">if</span> <span class="n">reply</span> <span class="o">==</span> <span class="n">_NOT_READY</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">97</span>       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>       <span class="k">continue</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">if</span> <span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;colab_reply&#39;</span> <span class="ow">and</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/Brain Tumor.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-c27e054d-7f37-4ac9-802c-726222e65389">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Image</th>
+      <th>Class</th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Image1</td>
+      <td>0</td>
+      <td>6.535339</td>
+      <td>619.587845</td>
+      <td>24.891522</td>
+      <td>0.109059</td>
+      <td>4.276477</td>
+      <td>18.900575</td>
+      <td>98.613971</td>
+      <td>0.293314</td>
+      <td>0.086033</td>
+      <td>0.530941</td>
+      <td>4.473346</td>
+      <td>0.981939</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Image2</td>
+      <td>0</td>
+      <td>8.749969</td>
+      <td>805.957634</td>
+      <td>28.389393</td>
+      <td>0.266538</td>
+      <td>3.718116</td>
+      <td>14.464618</td>
+      <td>63.858816</td>
+      <td>0.475051</td>
+      <td>0.225674</td>
+      <td>0.651352</td>
+      <td>3.220072</td>
+      <td>0.988834</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Image3</td>
+      <td>1</td>
+      <td>7.341095</td>
+      <td>1143.808219</td>
+      <td>33.820234</td>
+      <td>0.001467</td>
+      <td>5.061750</td>
+      <td>26.479563</td>
+      <td>81.867206</td>
+      <td>0.031917</td>
+      <td>0.001019</td>
+      <td>0.268275</td>
+      <td>5.981800</td>
+      <td>0.978014</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Image4</td>
+      <td>1</td>
+      <td>5.958145</td>
+      <td>959.711985</td>
+      <td>30.979219</td>
+      <td>0.001477</td>
+      <td>5.677977</td>
+      <td>33.428845</td>
+      <td>151.229741</td>
+      <td>0.032024</td>
+      <td>0.001026</td>
+      <td>0.243851</td>
+      <td>7.700919</td>
+      <td>0.964189</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Image5</td>
+      <td>0</td>
+      <td>7.315231</td>
+      <td>729.540579</td>
+      <td>27.010009</td>
+      <td>0.146761</td>
+      <td>4.283221</td>
+      <td>19.079108</td>
+      <td>174.988756</td>
+      <td>0.343849</td>
+      <td>0.118232</td>
+      <td>0.501140</td>
+      <td>6.834689</td>
+      <td>0.972789</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3757</th>
+      <td>Image3758</td>
+      <td>0</td>
+      <td>21.234512</td>
+      <td>1208.850174</td>
+      <td>34.768523</td>
+      <td>0.063774</td>
+      <td>2.082079</td>
+      <td>4.647310</td>
+      <td>158.437600</td>
+      <td>0.220666</td>
+      <td>0.048693</td>
+      <td>0.487131</td>
+      <td>5.211739</td>
+      <td>0.950972</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3758</th>
+      <td>Image3759</td>
+      <td>0</td>
+      <td>20.435349</td>
+      <td>1227.151440</td>
+      <td>35.030721</td>
+      <td>0.066763</td>
+      <td>2.144625</td>
+      <td>4.882034</td>
+      <td>161.158675</td>
+      <td>0.225931</td>
+      <td>0.051045</td>
+      <td>0.502712</td>
+      <td>5.083126</td>
+      <td>0.952749</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3759</th>
+      <td>Image3760</td>
+      <td>0</td>
+      <td>18.011520</td>
+      <td>1151.582765</td>
+      <td>33.934978</td>
+      <td>0.068396</td>
+      <td>2.308349</td>
+      <td>5.579498</td>
+      <td>167.130118</td>
+      <td>0.228930</td>
+      <td>0.052409</td>
+      <td>0.492269</td>
+      <td>5.103700</td>
+      <td>0.952181</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3760</th>
+      <td>Image3761</td>
+      <td>0</td>
+      <td>13.330429</td>
+      <td>945.732779</td>
+      <td>30.752769</td>
+      <td>0.087872</td>
+      <td>2.732822</td>
+      <td>7.757570</td>
+      <td>223.812932</td>
+      <td>0.261527</td>
+      <td>0.068397</td>
+      <td>0.480064</td>
+      <td>6.439784</td>
+      <td>0.940898</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3761</th>
+      <td>Image3762</td>
+      <td>0</td>
+      <td>6.110138</td>
+      <td>480.884025</td>
+      <td>21.929068</td>
+      <td>0.118171</td>
+      <td>4.110669</td>
+      <td>17.538826</td>
+      <td>239.251388</td>
+      <td>0.306224</td>
+      <td>0.093773</td>
+      <td>0.494333</td>
+      <td>6.787329</td>
+      <td>0.938731</td>
+      <td>7.458341e-155</td>
+    </tr>
+  </tbody>
+</table>
+<p>3762 rows × 15 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c27e054d-7f37-4ac9-802c-726222e65389')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-c27e054d-7f37-4ac9-802c-726222e65389 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-c27e054d-7f37-4ac9-802c-726222e65389');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fd1</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fd1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-96e5ee49-9024-4127-b26c-945b558ee3e2">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Class</th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>6.535339</td>
+      <td>619.587845</td>
+      <td>24.891522</td>
+      <td>0.109059</td>
+      <td>4.276477</td>
+      <td>18.900575</td>
+      <td>98.613971</td>
+      <td>0.293314</td>
+      <td>0.086033</td>
+      <td>0.530941</td>
+      <td>4.473346</td>
+      <td>0.981939</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>8.749969</td>
+      <td>805.957634</td>
+      <td>28.389393</td>
+      <td>0.266538</td>
+      <td>3.718116</td>
+      <td>14.464618</td>
+      <td>63.858816</td>
+      <td>0.475051</td>
+      <td>0.225674</td>
+      <td>0.651352</td>
+      <td>3.220072</td>
+      <td>0.988834</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>7.341095</td>
+      <td>1143.808219</td>
+      <td>33.820234</td>
+      <td>0.001467</td>
+      <td>5.061750</td>
+      <td>26.479563</td>
+      <td>81.867206</td>
+      <td>0.031917</td>
+      <td>0.001019</td>
+      <td>0.268275</td>
+      <td>5.981800</td>
+      <td>0.978014</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>5.958145</td>
+      <td>959.711985</td>
+      <td>30.979219</td>
+      <td>0.001477</td>
+      <td>5.677977</td>
+      <td>33.428845</td>
+      <td>151.229741</td>
+      <td>0.032024</td>
+      <td>0.001026</td>
+      <td>0.243851</td>
+      <td>7.700919</td>
+      <td>0.964189</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>7.315231</td>
+      <td>729.540579</td>
+      <td>27.010009</td>
+      <td>0.146761</td>
+      <td>4.283221</td>
+      <td>19.079108</td>
+      <td>174.988756</td>
+      <td>0.343849</td>
+      <td>0.118232</td>
+      <td>0.501140</td>
+      <td>6.834689</td>
+      <td>0.972789</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3757</th>
+      <td>0</td>
+      <td>21.234512</td>
+      <td>1208.850174</td>
+      <td>34.768523</td>
+      <td>0.063774</td>
+      <td>2.082079</td>
+      <td>4.647310</td>
+      <td>158.437600</td>
+      <td>0.220666</td>
+      <td>0.048693</td>
+      <td>0.487131</td>
+      <td>5.211739</td>
+      <td>0.950972</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3758</th>
+      <td>0</td>
+      <td>20.435349</td>
+      <td>1227.151440</td>
+      <td>35.030721</td>
+      <td>0.066763</td>
+      <td>2.144625</td>
+      <td>4.882034</td>
+      <td>161.158675</td>
+      <td>0.225931</td>
+      <td>0.051045</td>
+      <td>0.502712</td>
+      <td>5.083126</td>
+      <td>0.952749</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3759</th>
+      <td>0</td>
+      <td>18.011520</td>
+      <td>1151.582765</td>
+      <td>33.934978</td>
+      <td>0.068396</td>
+      <td>2.308349</td>
+      <td>5.579498</td>
+      <td>167.130118</td>
+      <td>0.228930</td>
+      <td>0.052409</td>
+      <td>0.492269</td>
+      <td>5.103700</td>
+      <td>0.952181</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3760</th>
+      <td>0</td>
+      <td>13.330429</td>
+      <td>945.732779</td>
+      <td>30.752769</td>
+      <td>0.087872</td>
+      <td>2.732822</td>
+      <td>7.757570</td>
+      <td>223.812932</td>
+      <td>0.261527</td>
+      <td>0.068397</td>
+      <td>0.480064</td>
+      <td>6.439784</td>
+      <td>0.940898</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3761</th>
+      <td>0</td>
+      <td>6.110138</td>
+      <td>480.884025</td>
+      <td>21.929068</td>
+      <td>0.118171</td>
+      <td>4.110669</td>
+      <td>17.538826</td>
+      <td>239.251388</td>
+      <td>0.306224</td>
+      <td>0.093773</td>
+      <td>0.494333</td>
+      <td>6.787329</td>
+      <td>0.938731</td>
+      <td>7.458341e-155</td>
+    </tr>
+  </tbody>
+</table>
+<p>3762 rows × 14 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-96e5ee49-9024-4127-b26c-945b558ee3e2')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-96e5ee49-9024-4127-b26c-945b558ee3e2 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-96e5ee49-9024-4127-b26c-945b558ee3e2');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">fd1</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">fd1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">fd1</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-c3836e23-8a19-4f99-b641-acc77b0e7e94">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6.535339</td>
+      <td>619.587845</td>
+      <td>24.891522</td>
+      <td>0.109059</td>
+      <td>4.276477</td>
+      <td>18.900575</td>
+      <td>98.613971</td>
+      <td>0.293314</td>
+      <td>0.086033</td>
+      <td>0.530941</td>
+      <td>4.473346</td>
+      <td>0.981939</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8.749969</td>
+      <td>805.957634</td>
+      <td>28.389393</td>
+      <td>0.266538</td>
+      <td>3.718116</td>
+      <td>14.464618</td>
+      <td>63.858816</td>
+      <td>0.475051</td>
+      <td>0.225674</td>
+      <td>0.651352</td>
+      <td>3.220072</td>
+      <td>0.988834</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.341095</td>
+      <td>1143.808219</td>
+      <td>33.820234</td>
+      <td>0.001467</td>
+      <td>5.061750</td>
+      <td>26.479563</td>
+      <td>81.867206</td>
+      <td>0.031917</td>
+      <td>0.001019</td>
+      <td>0.268275</td>
+      <td>5.981800</td>
+      <td>0.978014</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.958145</td>
+      <td>959.711985</td>
+      <td>30.979219</td>
+      <td>0.001477</td>
+      <td>5.677977</td>
+      <td>33.428845</td>
+      <td>151.229741</td>
+      <td>0.032024</td>
+      <td>0.001026</td>
+      <td>0.243851</td>
+      <td>7.700919</td>
+      <td>0.964189</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.315231</td>
+      <td>729.540579</td>
+      <td>27.010009</td>
+      <td>0.146761</td>
+      <td>4.283221</td>
+      <td>19.079108</td>
+      <td>174.988756</td>
+      <td>0.343849</td>
+      <td>0.118232</td>
+      <td>0.501140</td>
+      <td>6.834689</td>
+      <td>0.972789</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3757</th>
+      <td>21.234512</td>
+      <td>1208.850174</td>
+      <td>34.768523</td>
+      <td>0.063774</td>
+      <td>2.082079</td>
+      <td>4.647310</td>
+      <td>158.437600</td>
+      <td>0.220666</td>
+      <td>0.048693</td>
+      <td>0.487131</td>
+      <td>5.211739</td>
+      <td>0.950972</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3758</th>
+      <td>20.435349</td>
+      <td>1227.151440</td>
+      <td>35.030721</td>
+      <td>0.066763</td>
+      <td>2.144625</td>
+      <td>4.882034</td>
+      <td>161.158675</td>
+      <td>0.225931</td>
+      <td>0.051045</td>
+      <td>0.502712</td>
+      <td>5.083126</td>
+      <td>0.952749</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3759</th>
+      <td>18.011520</td>
+      <td>1151.582765</td>
+      <td>33.934978</td>
+      <td>0.068396</td>
+      <td>2.308349</td>
+      <td>5.579498</td>
+      <td>167.130118</td>
+      <td>0.228930</td>
+      <td>0.052409</td>
+      <td>0.492269</td>
+      <td>5.103700</td>
+      <td>0.952181</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3760</th>
+      <td>13.330429</td>
+      <td>945.732779</td>
+      <td>30.752769</td>
+      <td>0.087872</td>
+      <td>2.732822</td>
+      <td>7.757570</td>
+      <td>223.812932</td>
+      <td>0.261527</td>
+      <td>0.068397</td>
+      <td>0.480064</td>
+      <td>6.439784</td>
+      <td>0.940898</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>3761</th>
+      <td>6.110138</td>
+      <td>480.884025</td>
+      <td>21.929068</td>
+      <td>0.118171</td>
+      <td>4.110669</td>
+      <td>17.538826</td>
+      <td>239.251388</td>
+      <td>0.306224</td>
+      <td>0.093773</td>
+      <td>0.494333</td>
+      <td>6.787329</td>
+      <td>0.938731</td>
+      <td>7.458341e-155</td>
+    </tr>
+  </tbody>
+</table>
+<p>3762 rows × 13 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c3836e23-8a19-4f99-b641-acc77b0e7e94')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-c3836e23-8a19-4f99-b641-acc77b0e7e94 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-c3836e23-8a19-4f99-b641-acc77b0e7e94');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3009, 13, 753, 13)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-2d0509ae-475f-4167-b08e-c72faf3d2b04">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3202</th>
+      <td>13.736389</td>
+      <td>590.223126</td>
+      <td>24.294508</td>
+      <td>0.067402</td>
+      <td>2.226843</td>
+      <td>5.252715</td>
+      <td>59.699579</td>
+      <td>0.225803</td>
+      <td>0.050987</td>
+      <td>0.522784</td>
+      <td>3.448360</td>
+      <td>0.964269</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>1135</th>
+      <td>7.225845</td>
+      <td>1249.864241</td>
+      <td>35.353419</td>
+      <td>0.004168</td>
+      <td>5.276412</td>
+      <td>28.711909</td>
+      <td>144.260294</td>
+      <td>0.054192</td>
+      <td>0.002937</td>
+      <td>0.293204</td>
+      <td>6.146324</td>
+      <td>0.974742</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>1501</th>
+      <td>13.859329</td>
+      <td>1507.506312</td>
+      <td>38.826619</td>
+      <td>0.015143</td>
+      <td>3.322031</td>
+      <td>11.674202</td>
+      <td>193.170732</td>
+      <td>0.104801</td>
+      <td>0.010983</td>
+      <td>0.382412</td>
+      <td>5.817073</td>
+      <td>0.958720</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>1301</th>
+      <td>2.685760</td>
+      <td>336.146116</td>
+      <td>18.334288</td>
+      <td>0.002716</td>
+      <td>7.115389</td>
+      <td>51.594139</td>
+      <td>30.010558</td>
+      <td>0.043427</td>
+      <td>0.001886</td>
+      <td>0.298102</td>
+      <td>3.823529</td>
+      <td>0.955421</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>1220</th>
+      <td>12.155411</td>
+      <td>627.896241</td>
+      <td>25.057858</td>
+      <td>0.114336</td>
+      <td>2.495734</td>
+      <td>6.686382</td>
+      <td>111.623137</td>
+      <td>0.300411</td>
+      <td>0.090247</td>
+      <td>0.592414</td>
+      <td>3.316535</td>
+      <td>0.953036</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2594</th>
+      <td>15.910675</td>
+      <td>1212.593162</td>
+      <td>34.822308</td>
+      <td>0.063069</td>
+      <td>2.672132</td>
+      <td>7.417965</td>
+      <td>159.682909</td>
+      <td>0.219569</td>
+      <td>0.048210</td>
+      <td>0.466680</td>
+      <td>6.015358</td>
+      <td>0.966434</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>586</th>
+      <td>10.448135</td>
+      <td>914.734102</td>
+      <td>30.244571</td>
+      <td>0.111983</td>
+      <td>3.382665</td>
+      <td>11.806895</td>
+      <td>278.074693</td>
+      <td>0.297374</td>
+      <td>0.088431</td>
+      <td>0.522439</td>
+      <td>6.874040</td>
+      <td>0.948451</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>2818</th>
+      <td>3.969818</td>
+      <td>654.061548</td>
+      <td>25.574627</td>
+      <td>0.001826</td>
+      <td>6.943082</td>
+      <td>50.268621</td>
+      <td>214.684311</td>
+      <td>0.035617</td>
+      <td>0.001269</td>
+      <td>0.240308</td>
+      <td>9.818240</td>
+      <td>0.941663</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>876</th>
+      <td>7.682953</td>
+      <td>738.060252</td>
+      <td>27.167264</td>
+      <td>0.110787</td>
+      <td>4.007535</td>
+      <td>16.444083</td>
+      <td>203.482525</td>
+      <td>0.295764</td>
+      <td>0.087476</td>
+      <td>0.552632</td>
+      <td>5.080073</td>
+      <td>0.965460</td>
+      <td>7.458341e-155</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>1.633179</td>
+      <td>90.990324</td>
+      <td>9.538885</td>
+      <td>0.311193</td>
+      <td>6.351724</td>
+      <td>41.991414</td>
+      <td>132.167137</td>
+      <td>0.517166</td>
+      <td>0.267461</td>
+      <td>0.673173</td>
+      <td>3.824388</td>
+      <td>0.922118</td>
+      <td>7.458341e-155</td>
+    </tr>
+  </tbody>
+</table>
+<p>753 rows × 13 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-2d0509ae-475f-4167-b08e-c72faf3d2b04')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-2d0509ae-475f-4167-b08e-c72faf3d2b04 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-2d0509ae-475f-4167-b08e-c72faf3d2b04');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>  
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/csv/Brain Tumor.csv&#39;</span><span class="p">)</span>  
+<span class="n">filepath</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+<span class="n">X</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">le</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1, ..., 0, 0, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_class</span> <span class="o">=</span> <span class="n">fd1</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y_class</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 0, 1, 1, 0, 0, 0, 0, 0, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_class</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       0
+1       0
+2       1
+3       1
+4       0
+       ..
+3757    0
+3758    0
+3759    0
+3760    0
+3761    0
+Name: Class, Length: 3762, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Min-Max</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">nama_fitur</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">scaled_fitur</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaled</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">nama_fitur</span><span class="p">)</span>
+<span class="n">scaled_fitur</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-3164a34a-216d-41cd-99ab-9478f44f3ce5">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.194705</td>
+      <td>0.212023</td>
+      <td>0.443074</td>
+      <td>0.274801</td>
+      <td>0.068211</td>
+      <td>0.010937</td>
+      <td>0.028236</td>
+      <td>0.475410</td>
+      <td>0.246092</td>
+      <td>0.603108</td>
+      <td>0.139694</td>
+      <td>0.981764</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.261489</td>
+      <td>0.276124</td>
+      <td>0.510114</td>
+      <td>0.674843</td>
+      <td>0.052278</td>
+      <td>0.007693</td>
+      <td>0.017951</td>
+      <td>0.797096</td>
+      <td>0.648383</td>
+      <td>0.773800</td>
+      <td>0.093527</td>
+      <td>0.997417</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.219003</td>
+      <td>0.392326</td>
+      <td>0.614200</td>
+      <td>0.001487</td>
+      <td>0.090618</td>
+      <td>0.016478</td>
+      <td>0.023280</td>
+      <td>0.012719</td>
+      <td>0.001173</td>
+      <td>0.230760</td>
+      <td>0.195261</td>
+      <td>0.972855</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.177300</td>
+      <td>0.329007</td>
+      <td>0.559750</td>
+      <td>0.001513</td>
+      <td>0.108202</td>
+      <td>0.021559</td>
+      <td>0.043805</td>
+      <td>0.012908</td>
+      <td>0.001192</td>
+      <td>0.196137</td>
+      <td>0.258588</td>
+      <td>0.941475</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.218223</td>
+      <td>0.249840</td>
+      <td>0.483677</td>
+      <td>0.370574</td>
+      <td>0.068403</td>
+      <td>0.011067</td>
+      <td>0.050836</td>
+      <td>0.564860</td>
+      <td>0.338854</td>
+      <td>0.560862</td>
+      <td>0.226679</td>
+      <td>0.960995</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3757</th>
+      <td>0.637968</td>
+      <td>0.414697</td>
+      <td>0.632375</td>
+      <td>0.159764</td>
+      <td>0.005595</td>
+      <td>0.000515</td>
+      <td>0.045938</td>
+      <td>0.346817</td>
+      <td>0.138519</td>
+      <td>0.541004</td>
+      <td>0.166894</td>
+      <td>0.911473</td>
+      <td>1.449902e-167</td>
+    </tr>
+    <tr>
+      <th>3758</th>
+      <td>0.613869</td>
+      <td>0.420991</td>
+      <td>0.637400</td>
+      <td>0.167358</td>
+      <td>0.007379</td>
+      <td>0.000687</td>
+      <td>0.046743</td>
+      <td>0.356137</td>
+      <td>0.145293</td>
+      <td>0.563092</td>
+      <td>0.162157</td>
+      <td>0.915507</td>
+      <td>1.449902e-167</td>
+    </tr>
+    <tr>
+      <th>3759</th>
+      <td>0.540777</td>
+      <td>0.395000</td>
+      <td>0.616399</td>
+      <td>0.171507</td>
+      <td>0.012051</td>
+      <td>0.001197</td>
+      <td>0.048510</td>
+      <td>0.361445</td>
+      <td>0.149223</td>
+      <td>0.548288</td>
+      <td>0.162914</td>
+      <td>0.914218</td>
+      <td>1.449902e-167</td>
+    </tr>
+    <tr>
+      <th>3760</th>
+      <td>0.399615</td>
+      <td>0.324199</td>
+      <td>0.555410</td>
+      <td>0.220979</td>
+      <td>0.024163</td>
+      <td>0.002789</td>
+      <td>0.065284</td>
+      <td>0.419145</td>
+      <td>0.195282</td>
+      <td>0.530986</td>
+      <td>0.212132</td>
+      <td>0.888606</td>
+      <td>1.449902e-167</td>
+    </tr>
+    <tr>
+      <th>3761</th>
+      <td>0.181883</td>
+      <td>0.164316</td>
+      <td>0.386296</td>
+      <td>0.297948</td>
+      <td>0.063479</td>
+      <td>0.009941</td>
+      <td>0.069852</td>
+      <td>0.498261</td>
+      <td>0.268390</td>
+      <td>0.551213</td>
+      <td>0.224934</td>
+      <td>0.883686</td>
+      <td>1.459838e-167</td>
+    </tr>
+  </tbody>
+</table>
+<p>3762 rows × 13 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-3164a34a-216d-41cd-99ab-9478f44f3ce5')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-3164a34a-216d-41cd-99ab-9478f44f3ce5 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-3164a34a-216d-41cd-99ab-9478f44f3ce5');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">scaled_fitur</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3009, 13, 753, 13)
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Save normalisasi</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-6a490cf8-6ece-4023-997c-5f3352c64783">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1607</th>
+      <td>0.191634</td>
+      <td>0.140521</td>
+      <td>0.354890</td>
+      <td>0.337589</td>
+      <td>0.047565</td>
+      <td>0.006631</td>
+      <td>0.037736</td>
+      <td>0.534845</td>
+      <td>0.306087</td>
+      <td>0.642731</td>
+      <td>0.150865</td>
+      <td>0.912355</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1678</th>
+      <td>0.452039</td>
+      <td>0.335207</td>
+      <td>0.565300</td>
+      <td>0.232638</td>
+      <td>0.018493</td>
+      <td>0.002111</td>
+      <td>0.044605</td>
+      <td>0.431402</td>
+      <td>0.205854</td>
+      <td>0.674810</td>
+      <td>0.111656</td>
+      <td>0.925567</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1520</th>
+      <td>0.267786</td>
+      <td>0.126280</td>
+      <td>0.334818</td>
+      <td>0.246122</td>
+      <td>0.020542</td>
+      <td>0.002354</td>
+      <td>0.013063</td>
+      <td>0.445555</td>
+      <td>0.218406</td>
+      <td>0.660546</td>
+      <td>0.080574</td>
+      <td>0.947917</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1805</th>
+      <td>0.145391</td>
+      <td>0.070520</td>
+      <td>0.242540</td>
+      <td>0.286045</td>
+      <td>0.041276</td>
+      <td>0.005455</td>
+      <td>0.015114</td>
+      <td>0.485301</td>
+      <td>0.255625</td>
+      <td>0.687838</td>
+      <td>0.079887</td>
+      <td>0.919145</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>946</th>
+      <td>0.345903</td>
+      <td>0.179164</td>
+      <td>0.404755</td>
+      <td>0.171447</td>
+      <td>0.013899</td>
+      <td>0.001370</td>
+      <td>0.018599</td>
+      <td>0.359039</td>
+      <td>0.147435</td>
+      <td>0.736652</td>
+      <td>0.066564</td>
+      <td>0.927113</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2763</th>
+      <td>0.152687</td>
+      <td>0.210332</td>
+      <td>0.441178</td>
+      <td>0.002515</td>
+      <td>0.096400</td>
+      <td>0.018086</td>
+      <td>0.047761</td>
+      <td>0.020039</td>
+      <td>0.001982</td>
+      <td>0.280639</td>
+      <td>0.195838</td>
+      <td>0.851853</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>905</th>
+      <td>0.500981</td>
+      <td>0.274474</td>
+      <td>0.508492</td>
+      <td>0.077560</td>
+      <td>0.011804</td>
+      <td>0.001350</td>
+      <td>0.013857</td>
+      <td>0.225459</td>
+      <td>0.064890</td>
+      <td>0.621552</td>
+      <td>0.078969</td>
+      <td>0.962972</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1096</th>
+      <td>0.380813</td>
+      <td>0.404815</td>
+      <td>0.624409</td>
+      <td>0.063442</td>
+      <td>0.038482</td>
+      <td>0.005292</td>
+      <td>0.048748</td>
+      <td>0.199457</td>
+      <td>0.052638</td>
+      <td>0.522261</td>
+      <td>0.137614</td>
+      <td>0.925405</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>0.573327</td>
+      <td>0.429673</td>
+      <td>0.644270</td>
+      <td>0.157288</td>
+      <td>0.011753</td>
+      <td>0.001161</td>
+      <td>0.040381</td>
+      <td>0.343560</td>
+      <td>0.136189</td>
+      <td>0.570264</td>
+      <td>0.153073</td>
+      <td>0.937956</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1061</th>
+      <td>0.143267</td>
+      <td>0.072830</td>
+      <td>0.246965</td>
+      <td>0.202857</td>
+      <td>0.048108</td>
+      <td>0.006907</td>
+      <td>0.023658</td>
+      <td>0.398795</td>
+      <td>0.178339</td>
+      <td>0.552366</td>
+      <td>0.121174</td>
+      <td>0.873787</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3009 rows × 13 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-6a490cf8-6ece-4023-997c-5f3352c64783')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-6a490cf8-6ece-4023-997c-5f3352c64783 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-6a490cf8-6ece-4023-997c-5f3352c64783');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">joblib</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/model/model.sav&#39;</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/content/drive/MyDrive/DATA MINING/tugas/model/model.sav&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Split</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>  
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/model/fix.csv&#39;</span><span class="p">)</span>  
+<span class="n">filepath</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+<span class="n">X_test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Inisialisasi model GaussianNB</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">probas</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0,
+       0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1,
+       1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0,
+       1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+       1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1,
+       0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0,
+       1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0,
+       0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+       1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0,
+       1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+       1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0,
+       0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+       0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1,
+       0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0,
+       0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+       1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
+       1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+       1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1,
+       1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+       0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1,
+       0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0,
+       0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,
+       1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1,
+       1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,
+       0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1,
+       1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1,
+       0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0,
+       1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0,
+       0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0,
+       0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
+       1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+       0, 0, 1, 0, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="c1">#Try running from k=1 through 30 and record testing accuracy</span>
+<span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">scores_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+        <span class="c1">#install model</span>
+        <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+      
+        <span class="n">filenameKNN</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/model/knnmodel&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.pkl&#39;</span>
+        <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span><span class="n">filenameKNN</span><span class="p">)</span>
+        <span class="n">y_pred</span><span class="o">=</span><span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="n">scores</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">scores_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">))</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: 0.9853917662682603,
+ 2: 0.9946879150066401,
+ 3: 0.9920318725099602,
+ 4: 0.9960159362549801,
+ 5: 0.9933598937583001,
+ 6: 0.9933598937583001,
+ 7: 0.9933598937583001,
+ 8: 0.9933598937583001,
+ 9: 0.9933598937583001,
+ 10: 0.9933598937583001,
+ 11: 0.9933598937583001,
+ 12: 0.9946879150066401,
+ 13: 0.9933598937583001,
+ 14: 0.9933598937583001,
+ 15: 0.9933598937583001,
+ 16: 0.9946879150066401,
+ 17: 0.9946879150066401,
+ 18: 0.9946879150066401,
+ 19: 0.9946879150066401,
+ 20: 0.9946879150066401,
+ 21: 0.9946879150066401,
+ 22: 0.9946879150066401,
+ 23: 0.9946879150066401,
+ 24: 0.9960159362549801,
+ 25: 0.9946879150066401,
+ 26: 0.9960159362549801,
+ 27: 0.9946879150066401,
+ 28: 0.9946879150066401,
+ 29: 0.9946879150066401,
+ 30: 0.9946879150066401}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-b40ec6fd-4ac6-41eb-8298-83820794a617">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3202</th>
+      <td>0.411857</td>
+      <td>0.201923</td>
+      <td>0.431632</td>
+      <td>0.168981</td>
+      <td>0.009725</td>
+      <td>0.000958</td>
+      <td>0.016720</td>
+      <td>0.355911</td>
+      <td>0.145127</td>
+      <td>0.591544</td>
+      <td>0.101937</td>
+      <td>0.941657</td>
+      <td>4.057407e-169</td>
+    </tr>
+    <tr>
+      <th>1135</th>
+      <td>0.215528</td>
+      <td>0.428803</td>
+      <td>0.643585</td>
+      <td>0.008348</td>
+      <td>0.096743</td>
+      <td>0.018110</td>
+      <td>0.041743</td>
+      <td>0.052148</td>
+      <td>0.006699</td>
+      <td>0.266099</td>
+      <td>0.201322</td>
+      <td>0.965428</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1501</th>
+      <td>0.415565</td>
+      <td>0.517418</td>
+      <td>0.710152</td>
+      <td>0.036227</td>
+      <td>0.040976</td>
+      <td>0.005653</td>
+      <td>0.056216</td>
+      <td>0.141729</td>
+      <td>0.029880</td>
+      <td>0.392557</td>
+      <td>0.189193</td>
+      <td>0.929059</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1301</th>
+      <td>0.078619</td>
+      <td>0.114534</td>
+      <td>0.317399</td>
+      <td>0.004659</td>
+      <td>0.149218</td>
+      <td>0.034841</td>
+      <td>0.007935</td>
+      <td>0.033094</td>
+      <td>0.003671</td>
+      <td>0.273041</td>
+      <td>0.115757</td>
+      <td>0.921572</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1220</th>
+      <td>0.364182</td>
+      <td>0.214880</td>
+      <td>0.446262</td>
+      <td>0.288207</td>
+      <td>0.017398</td>
+      <td>0.002006</td>
+      <td>0.032085</td>
+      <td>0.487971</td>
+      <td>0.258230</td>
+      <td>0.690250</td>
+      <td>0.097081</td>
+      <td>0.916158</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2594</th>
+      <td>0.477424</td>
+      <td>0.415984</td>
+      <td>0.633406</td>
+      <td>0.157974</td>
+      <td>0.022431</td>
+      <td>0.002541</td>
+      <td>0.046307</td>
+      <td>0.344875</td>
+      <td>0.137127</td>
+      <td>0.512013</td>
+      <td>0.196497</td>
+      <td>0.946570</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>586</th>
+      <td>0.312698</td>
+      <td>0.313537</td>
+      <td>0.545670</td>
+      <td>0.282230</td>
+      <td>0.042706</td>
+      <td>0.005750</td>
+      <td>0.081340</td>
+      <td>0.482596</td>
+      <td>0.253001</td>
+      <td>0.591055</td>
+      <td>0.228128</td>
+      <td>0.905751</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>2818</th>
+      <td>0.117340</td>
+      <td>0.223880</td>
+      <td>0.456166</td>
+      <td>0.002399</td>
+      <td>0.144301</td>
+      <td>0.033872</td>
+      <td>0.062582</td>
+      <td>0.019269</td>
+      <td>0.001893</td>
+      <td>0.191114</td>
+      <td>0.336584</td>
+      <td>0.890343</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>876</th>
+      <td>0.229312</td>
+      <td>0.252771</td>
+      <td>0.486691</td>
+      <td>0.279192</td>
+      <td>0.060537</td>
+      <td>0.009141</td>
+      <td>0.059268</td>
+      <td>0.479745</td>
+      <td>0.250249</td>
+      <td>0.633857</td>
+      <td>0.162044</td>
+      <td>0.944360</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>0.046878</td>
+      <td>0.030214</td>
+      <td>0.148828</td>
+      <td>0.788279</td>
+      <td>0.127427</td>
+      <td>0.027820</td>
+      <td>0.038165</td>
+      <td>0.871643</td>
+      <td>0.768768</td>
+      <td>0.804732</td>
+      <td>0.115788</td>
+      <td>0.845977</td>
+      <td>0.000000e+00</td>
+    </tr>
+  </tbody>
+</table>
+<p>753 rows × 13 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-b40ec6fd-4ac6-41eb-8298-83820794a617')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-b40ec6fd-4ac6-41eb-8298-83820794a617 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-b40ec6fd-4ac6-41eb-8298-83820794a617');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y_pred</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+0
+0
+0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Mean  Variance  Standard Deviation   Entropy  Skewness  Kurtosis  \
+1607  0.191634  0.140521            0.354890  0.337589  0.047565  0.006631   
+1678  0.452039  0.335207            0.565300  0.232638  0.018493  0.002111   
+1520  0.267786  0.126280            0.334818  0.246122  0.020542  0.002354   
+1805  0.145391  0.070520            0.242540  0.286045  0.041276  0.005455   
+946   0.345903  0.179164            0.404755  0.171447  0.013899  0.001370   
+...        ...       ...                 ...       ...       ...       ...   
+2763  0.152687  0.210332            0.441178  0.002515  0.096400  0.018086   
+905   0.500981  0.274474            0.508492  0.077560  0.011804  0.001350   
+1096  0.380813  0.404815            0.624409  0.063442  0.038482  0.005292   
+235   0.573327  0.429673            0.644270  0.157288  0.011753  0.001161   
+1061  0.143267  0.072830            0.246965  0.202857  0.048108  0.006907   
+
+      Contrast    Energy       ASM  Homogeneity  Dissimilarity  Correlation  \
+1607  0.037736  0.534845  0.306087     0.642731       0.150865     0.912355   
+1678  0.044605  0.431402  0.205854     0.674810       0.111656     0.925567   
+1520  0.013063  0.445555  0.218406     0.660546       0.080574     0.947917   
+1805  0.015114  0.485301  0.255625     0.687838       0.079887     0.919145   
+946   0.018599  0.359039  0.147435     0.736652       0.066564     0.927113   
+...        ...       ...       ...          ...            ...          ...   
+2763  0.047761  0.020039  0.001982     0.280639       0.195838     0.851853   
+905   0.013857  0.225459  0.064890     0.621552       0.078969     0.962972   
+1096  0.048748  0.199457  0.052638     0.522261       0.137614     0.925405   
+235   0.040381  0.343560  0.136189     0.570264       0.153073     0.937956   
+1061  0.023658  0.398795  0.178339     0.552366       0.121174     0.873787   
+
+      Coarseness  
+1607         0.0  
+1678         0.0  
+1520         0.0  
+1805         0.0  
+946          0.0  
+...          ...  
+2763         0.0  
+905          0.0  
+1096         0.0  
+235          0.0  
+1061         0.0  
+
+[3009 rows x 13 columns] [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Save model naivebaye</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">joblib</span>
+<span class="n">filenameNB</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/model/modelNB.pkl&#39;</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span><span class="n">filenameNB</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/content/drive/MyDrive/DATA MINING/tugas/model/modelNB.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-24b50a92-a353-46a5-934a-0b9256403646">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1607</th>
+      <td>0.191634</td>
+      <td>0.140521</td>
+      <td>0.354890</td>
+      <td>0.337589</td>
+      <td>0.047565</td>
+      <td>0.006631</td>
+      <td>0.037736</td>
+      <td>0.534845</td>
+      <td>0.306087</td>
+      <td>0.642731</td>
+      <td>0.150865</td>
+      <td>0.912355</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1678</th>
+      <td>0.452039</td>
+      <td>0.335207</td>
+      <td>0.565300</td>
+      <td>0.232638</td>
+      <td>0.018493</td>
+      <td>0.002111</td>
+      <td>0.044605</td>
+      <td>0.431402</td>
+      <td>0.205854</td>
+      <td>0.674810</td>
+      <td>0.111656</td>
+      <td>0.925567</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1520</th>
+      <td>0.267786</td>
+      <td>0.126280</td>
+      <td>0.334818</td>
+      <td>0.246122</td>
+      <td>0.020542</td>
+      <td>0.002354</td>
+      <td>0.013063</td>
+      <td>0.445555</td>
+      <td>0.218406</td>
+      <td>0.660546</td>
+      <td>0.080574</td>
+      <td>0.947917</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1805</th>
+      <td>0.145391</td>
+      <td>0.070520</td>
+      <td>0.242540</td>
+      <td>0.286045</td>
+      <td>0.041276</td>
+      <td>0.005455</td>
+      <td>0.015114</td>
+      <td>0.485301</td>
+      <td>0.255625</td>
+      <td>0.687838</td>
+      <td>0.079887</td>
+      <td>0.919145</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>946</th>
+      <td>0.345903</td>
+      <td>0.179164</td>
+      <td>0.404755</td>
+      <td>0.171447</td>
+      <td>0.013899</td>
+      <td>0.001370</td>
+      <td>0.018599</td>
+      <td>0.359039</td>
+      <td>0.147435</td>
+      <td>0.736652</td>
+      <td>0.066564</td>
+      <td>0.927113</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2763</th>
+      <td>0.152687</td>
+      <td>0.210332</td>
+      <td>0.441178</td>
+      <td>0.002515</td>
+      <td>0.096400</td>
+      <td>0.018086</td>
+      <td>0.047761</td>
+      <td>0.020039</td>
+      <td>0.001982</td>
+      <td>0.280639</td>
+      <td>0.195838</td>
+      <td>0.851853</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>905</th>
+      <td>0.500981</td>
+      <td>0.274474</td>
+      <td>0.508492</td>
+      <td>0.077560</td>
+      <td>0.011804</td>
+      <td>0.001350</td>
+      <td>0.013857</td>
+      <td>0.225459</td>
+      <td>0.064890</td>
+      <td>0.621552</td>
+      <td>0.078969</td>
+      <td>0.962972</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1096</th>
+      <td>0.380813</td>
+      <td>0.404815</td>
+      <td>0.624409</td>
+      <td>0.063442</td>
+      <td>0.038482</td>
+      <td>0.005292</td>
+      <td>0.048748</td>
+      <td>0.199457</td>
+      <td>0.052638</td>
+      <td>0.522261</td>
+      <td>0.137614</td>
+      <td>0.925405</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>0.573327</td>
+      <td>0.429673</td>
+      <td>0.644270</td>
+      <td>0.157288</td>
+      <td>0.011753</td>
+      <td>0.001161</td>
+      <td>0.040381</td>
+      <td>0.343560</td>
+      <td>0.136189</td>
+      <td>0.570264</td>
+      <td>0.153073</td>
+      <td>0.937956</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1061</th>
+      <td>0.143267</td>
+      <td>0.072830</td>
+      <td>0.246965</td>
+      <td>0.202857</td>
+      <td>0.048108</td>
+      <td>0.006907</td>
+      <td>0.023658</td>
+      <td>0.398795</td>
+      <td>0.178339</td>
+      <td>0.552366</td>
+      <td>0.121174</td>
+      <td>0.873787</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>3009 rows × 13 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-24b50a92-a353-46a5-934a-0b9256403646')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-24b50a92-a353-46a5-934a-0b9256403646 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-24b50a92-a353-46a5-934a-0b9256403646');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<p>#Menghitung probas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.27188718e-006, 1.00000000e+000, 9.99999878e-001, 1.00000000e+000,
+       1.43789673e-017, 1.15939369e-008, 2.56341014e-014, 1.00000000e+000,
+       4.12826336e-020, 9.99984234e-001, 1.62760261e-013, 9.99903219e-001,
+       1.00000000e+000, 2.67755659e-016, 9.98233130e-017, 1.00000000e+000,
+       1.00000000e+000, 3.95522229e-012, 1.00000000e+000, 1.00000000e+000,
+       1.05322954e-020, 6.42330906e-006, 1.10755656e-036, 4.34010046e-045,
+       7.18441793e-001, 1.00000000e+000, 9.99986834e-001, 9.99999998e-001,
+       1.00000000e+000, 4.36371260e-034, 1.27623829e-016, 9.99999908e-001,
+       2.28270030e-015, 1.96509957e-011, 4.06953223e-007, 9.99999971e-001,
+       1.65314439e-020, 9.99998218e-001, 9.99996401e-001, 2.73596901e-095,
+       4.39207644e-024, 1.00000000e+000, 1.00000000e+000, 1.00000000e+000,
+       1.00000000e+000, 1.00000000e+000, 1.87110986e-014, 9.47015110e-065,
+       2.97480373e-049, 9.99913393e-001, 3.78827311e-006, 9.99998189e-001,
+       8.38031101e-003, 3.47414674e-011, 1.00064277e-009, 3.05446205e-026,
+       5.62879815e-012, 9.99987301e-001, 8.47739683e-010, 1.00000000e+000,
+       1.00000000e+000, 1.75077485e-021, 1.33051214e-015, 1.00000000e+000,
+       9.99998054e-001, 1.10416741e-021, 1.00000000e+000, 9.99999716e-001,
+       2.87077731e-010, 1.16385561e-012, 5.19042926e-020, 1.00000000e+000,
+       3.02867892e-008, 9.44171736e-001, 9.68324283e-019, 9.99999996e-001,
+       9.99999920e-001, 8.99758098e-012, 1.82428624e-011, 1.55111024e-001,
+       8.97325062e-022, 3.99623114e-029, 9.99999997e-001, 1.46170030e-019,
+       1.16305471e-022, 1.04149680e-014, 1.00000000e+000, 6.77619101e-011,
+       1.00000000e+000, 1.82357716e-013, 9.99999780e-001, 1.00000000e+000,
+       3.57973622e-006, 1.87956861e-009, 1.00000000e+000, 9.98164495e-001,
+       1.74283316e-017, 2.05486198e-013, 4.35496347e-021, 6.92957489e-035,
+       1.00000000e+000, 1.35351739e-007, 4.00719570e-025, 1.44987039e-011,
+       9.99998701e-001, 1.01045865e-006, 4.98768991e-067, 1.00000000e+000,
+       1.07052004e-014, 9.99999897e-001, 2.68353209e-060, 5.67893210e-018,
+       3.70887968e-013, 1.33170939e-006, 9.99996034e-001, 5.05705627e-014,
+       1.00000000e+000, 3.61831939e-010, 9.09932742e-040, 9.99999996e-001,
+       3.23799745e-021, 1.00000000e+000, 2.23078954e-033, 8.96047615e-001,
+       1.00000000e+000, 8.77192946e-024, 9.99999207e-001, 1.18007047e-013,
+       1.00000000e+000, 1.82835175e-006, 9.18183822e-004, 1.02599330e-007,
+       1.00000000e+000, 1.00184674e-008, 1.00000000e+000, 7.98580803e-001,
+       1.00000000e+000, 1.41493352e-056, 5.90812311e-004, 7.61382901e-035,
+       8.71021961e-011, 9.55276118e-001, 9.99984613e-001, 9.99999874e-001,
+       9.99999996e-001, 9.99999992e-001, 9.99571095e-001, 1.57078603e-026,
+       9.17499040e-009, 9.99999904e-001, 8.74293831e-004, 3.77204509e-010,
+       1.00000000e+000, 1.35171455e-006, 4.99914840e-023, 1.01229581e-020,
+       9.99999997e-001, 8.29719372e-028, 9.99999973e-001, 9.99999849e-001,
+       1.00000000e+000, 2.87415109e-022, 9.99999926e-001, 7.05217046e-080,
+       9.99995963e-001, 2.95953777e-009, 1.00000000e+000, 3.70766482e-039,
+       1.68202447e-052, 1.00000000e+000, 1.00000000e+000, 1.00000000e+000,
+       1.00000000e+000, 2.44185569e-013, 2.12129657e-013, 1.45371135e-009,
+       9.99854555e-001, 2.49900654e-008, 4.84524616e-017, 4.44908973e-004,
+       9.99999884e-001, 9.91192566e-001, 2.20578109e-012, 8.24528791e-008,
+       1.02994952e-041, 5.30576270e-025, 4.11836060e-003, 8.99450313e-013,
+       3.07299146e-007, 9.99990642e-001, 3.52321636e-017, 9.99987592e-001,
+       9.60224524e-014, 1.40567782e-015, 3.71399786e-010, 6.04069716e-017,
+       9.99999988e-001, 1.15472132e-053, 1.00000000e+000, 1.11421275e-002,
+       9.59081562e-035, 7.80493097e-009, 9.99999219e-001, 9.99965370e-001,
+       9.99977521e-001, 2.19350039e-086, 9.99999996e-001, 5.09993610e-007,
+       1.47347129e-006, 8.13454254e-001, 9.78421844e-009, 1.00000000e+000,
+       2.17081312e-005, 2.80825523e-037, 9.99977142e-001, 6.86732503e-008,
+       5.79169666e-009, 1.13042292e-022, 9.27623535e-001, 7.37579280e-017,
+       9.99999999e-001, 5.09863615e-078, 3.17671787e-111, 5.30566349e-018,
+       6.07835437e-038, 6.31632692e-004, 7.14808213e-011, 9.99999900e-001,
+       2.14152687e-025, 1.16469576e-015, 1.51112223e-003, 6.43649386e-017,
+       8.36764458e-076, 9.99999990e-001, 1.00000000e+000, 1.08917112e-014,
+       7.06015171e-070, 9.99999300e-001, 1.00000000e+000, 1.27444186e-009,
+       9.99999998e-001, 2.72129252e-011, 5.27701805e-032, 1.51712688e-027,
+       1.00000000e+000, 1.93845702e-029, 8.58440294e-010, 2.76007075e-018,
+       2.56000159e-003, 2.98616204e-025, 9.99999735e-001, 7.29357778e-003,
+       9.98221695e-001, 8.85086987e-023, 1.00000000e+000, 7.82335014e-009,
+       9.99986227e-001, 3.97193359e-022, 1.00000000e+000, 9.99999787e-001,
+       1.25876035e-016, 9.11577709e-013, 1.56933047e-008, 3.98294620e-077,
+       3.83813969e-005, 9.99999828e-001, 8.08421031e-014, 8.84043299e-001,
+       3.87754089e-071, 1.17046702e-015, 9.99999999e-001, 2.06902235e-012,
+       9.99998660e-001, 8.38424490e-011, 1.00000000e+000, 9.99999976e-001,
+       1.00000000e+000, 1.10899338e-006, 1.95291196e-020, 9.99999998e-001,
+       5.18492729e-014, 4.39342155e-036, 1.00000000e+000, 9.99999906e-001,
+       9.99999988e-001, 1.00000000e+000, 8.61204426e-065, 4.29602517e-048,
+       1.05830667e-011, 4.12109606e-022, 9.99999958e-001, 1.00000000e+000,
+       4.46852709e-017, 1.00000000e+000, 1.92383080e-005, 9.99996560e-001,
+       1.60864301e-009, 8.92895421e-002, 9.99998994e-001, 4.16643994e-011,
+       9.99999997e-001, 1.60753387e-008, 9.98680191e-001, 7.19890810e-022,
+       1.98835835e-006, 1.12986186e-020, 9.99994957e-001, 1.00859862e-002,
+       2.01115325e-010, 3.05060248e-007, 2.12451313e-048, 6.84303466e-008,
+       4.69344725e-033, 9.99999999e-001, 4.60621073e-006, 1.00000000e+000,
+       5.86386768e-014, 3.04871484e-045, 9.95656125e-016, 2.88195169e-010,
+       1.00000000e+000, 2.91598578e-004, 9.99999999e-001, 1.00000000e+000,
+       1.00000000e+000, 1.66526855e-013, 1.18726459e-005, 2.87999997e-023,
+       1.25808534e-033, 2.60389152e-005, 1.00000000e+000, 9.89490402e-001,
+       9.99999970e-001, 9.99999997e-001, 4.12143910e-058, 1.66535509e-016,
+       1.55338925e-015, 1.62747828e-064, 2.71997540e-003, 1.00000000e+000,
+       9.74346883e-053, 1.00000000e+000, 3.99175120e-010, 6.68908862e-006,
+       1.00000000e+000, 1.00000000e+000, 2.06541655e-007, 6.86270190e-013,
+       9.99997772e-001, 9.99999144e-001, 1.31434833e-024, 6.25665536e-040,
+       1.00000000e+000, 2.09246519e-003, 1.71226155e-006, 4.28882260e-038,
+       8.03078880e-029, 9.99999999e-001, 1.00000000e+000, 8.70100903e-066,
+       9.99998569e-001, 9.99991652e-001, 2.66992256e-037, 9.99999999e-001,
+       1.00000000e+000, 2.64196922e-012, 3.80088353e-007, 2.42236372e-017,
+       4.35781569e-068, 1.14817371e-004, 6.90663433e-016, 9.99999995e-001,
+       1.00000000e+000, 1.00000000e+000, 1.00000000e+000, 9.99995665e-001,
+       1.27887704e-012, 9.95068302e-001, 4.89254339e-012, 3.33238063e-011,
+       2.36348700e-003, 9.92097597e-016, 2.37035475e-008, 9.99941799e-001,
+       1.00000000e+000, 9.08182105e-034, 6.77214878e-018, 1.00000000e+000,
+       1.79350351e-011, 1.85637026e-026, 1.96900036e-019, 9.46019589e-001,
+       5.91746639e-008, 6.55625016e-009, 1.00000000e+000, 1.00000000e+000,
+       9.99791812e-001, 1.00000000e+000, 9.49982704e-022, 3.49944269e-037,
+       9.99127329e-001, 1.66065868e-043, 1.00000000e+000, 1.57197037e-012,
+       3.74906936e-015, 9.99998932e-001, 3.30265083e-052, 3.69216786e-024,
+       2.70368377e-014, 1.32013566e-014, 2.66102739e-015, 9.99991420e-001,
+       1.90812856e-014, 1.14914972e-013, 4.92351757e-008, 1.00000000e+000,
+       3.04932218e-014, 1.00000000e+000, 5.87692203e-014, 2.08086085e-057,
+       9.99996613e-001, 9.99999999e-001, 3.54595330e-008, 9.90322765e-001,
+       9.99999489e-001, 6.85229751e-013, 7.33300473e-007, 2.29516490e-015,
+       4.23083758e-028, 1.79298185e-005, 1.00000000e+000, 1.00000000e+000,
+       9.99999991e-001, 9.99901776e-001, 1.15961952e-019, 9.33049796e-011,
+       4.01055663e-016, 3.66831887e-021, 3.81783478e-026, 1.61180892e-009,
+       8.63126050e-087, 9.37504003e-025, 8.75825141e-020, 4.12457425e-001,
+       1.12330414e-007, 1.00000000e+000, 6.43105008e-048, 2.22802821e-019,
+       1.00000000e+000, 3.87964622e-016, 9.99994602e-001, 1.00000000e+000,
+       1.91723679e-015, 9.99999612e-001, 7.85672315e-033, 1.00000000e+000,
+       8.34174081e-023, 5.83420817e-054, 9.99973583e-001, 1.00000000e+000,
+       8.29243384e-026, 9.99999992e-001, 5.31808292e-034, 9.98787815e-001,
+       9.99991193e-001, 9.99999967e-001, 1.35217718e-016, 9.99995789e-001,
+       3.57019860e-018, 9.98100551e-001, 2.33533586e-021, 4.89366429e-016,
+       3.15938777e-011, 9.99999940e-001, 5.67206911e-007, 9.99999516e-001,
+       1.34706797e-014, 9.99999206e-001, 1.86822377e-046, 1.79073358e-005,
+       6.46478062e-111, 4.43370266e-015, 9.99951543e-001, 5.45650776e-006,
+       1.59681611e-021, 9.99966767e-001, 1.25144446e-018, 9.99999179e-001,
+       6.23245739e-114, 1.00000000e+000, 1.00000000e+000, 4.52624948e-007,
+       1.22754176e-048, 9.99980224e-001, 9.99995841e-001, 9.99832622e-001,
+       5.79694877e-005, 1.00000000e+000, 9.99999999e-001, 1.00000000e+000,
+       6.12372189e-007, 6.63292384e-010, 9.40757617e-031, 1.00000000e+000,
+       9.99999998e-001, 1.00000000e+000, 9.99997794e-001, 5.57334576e-005,
+       9.99892898e-001, 1.21522644e-007, 9.99999030e-001, 1.00000000e+000,
+       1.00000000e+000, 9.60617646e-051, 9.99894802e-001, 1.00000000e+000,
+       4.21240992e-010, 9.99999999e-001, 1.98822704e-015, 9.99999999e-001,
+       1.09121707e-110, 1.62001266e-013, 9.99999948e-001, 9.99999995e-001,
+       1.42573011e-007, 4.14574528e-025, 7.61382901e-035, 9.99999973e-001,
+       9.97152200e-001, 1.00000000e+000, 1.00000000e+000, 1.85593610e-007,
+       8.59373596e-013, 5.39682789e-009, 3.12384220e-001, 1.00000000e+000,
+       9.99999654e-001, 6.06364213e-024, 7.80582677e-023, 1.00000000e+000,
+       1.29718904e-045, 7.42561938e-026, 2.54099906e-006, 1.90709853e-005,
+       6.01196797e-046, 3.87754089e-071, 9.99999998e-001, 9.99999819e-001,
+       1.86917620e-005, 9.95779708e-001, 1.57581088e-005, 1.00000000e+000,
+       4.34616017e-041, 7.55465999e-031, 3.79140287e-015, 9.78009807e-029,
+       1.00000000e+000, 1.00000000e+000, 9.99998884e-001, 1.60285290e-019,
+       1.00000000e+000, 3.38089720e-011, 1.93680582e-007, 9.99997743e-001,
+       9.99999272e-001, 9.47049603e-001, 9.99999986e-001, 4.04551738e-006,
+       2.53180570e-015, 9.01995963e-036, 4.41946675e-012, 1.00000000e+000,
+       9.99969065e-001, 9.99986166e-001, 9.95502697e-001, 9.80132028e-041,
+       2.15939993e-037, 9.99999998e-001, 1.00000000e+000, 9.99999844e-001,
+       1.25947796e-053, 9.99972953e-001, 6.41638598e-016, 2.34017464e-008,
+       5.16570457e-004, 1.96129215e-024, 9.99781597e-001, 1.00000000e+000,
+       9.48913961e-007, 8.58937370e-042, 1.00000000e+000, 1.56493399e-020,
+       9.99999754e-001, 9.99999834e-001, 4.07379600e-010, 2.30170790e-011,
+       3.88830512e-009, 9.99993109e-001, 1.87411914e-011, 1.25071205e-038,
+       2.37970738e-015, 2.47540792e-006, 9.04692168e-004, 9.92778865e-007,
+       1.93913059e-038, 9.99999998e-001, 1.00000000e+000, 5.26140103e-043,
+       5.63421552e-002, 9.01617933e-021, 1.58259574e-013, 1.03824841e-007,
+       5.29195030e-005, 2.44058588e-009, 1.88229695e-013, 6.26352860e-009,
+       6.10489690e-014, 8.60396674e-034, 4.96489844e-013, 1.00000000e+000,
+       1.12430288e-103, 9.99999999e-001, 8.93632993e-020, 5.52778704e-009,
+       9.43007016e-001, 4.85462800e-054, 9.99999157e-001, 4.20047477e-021,
+       1.30852524e-016, 1.00000000e+000, 4.74441985e-017, 1.79828932e-020,
+       6.20611373e-005, 1.53564247e-007, 9.99999975e-001, 1.00000000e+000,
+       8.04274151e-024, 1.42486316e-003, 6.35897106e-023, 1.65711249e-011,
+       5.56086842e-010, 8.36131362e-020, 4.67192378e-021, 2.82490079e-003,
+       2.41038587e-017, 9.99999997e-001, 9.99990701e-001, 9.22412758e-001,
+       5.61544055e-016, 5.69026517e-006, 5.64088034e-008, 9.99999907e-001,
+       9.99998280e-001, 1.00000000e+000, 1.00000000e+000, 2.82536808e-008,
+       9.99999879e-001, 6.20440582e-010, 9.99999978e-001, 8.68470349e-076,
+       1.00000000e+000, 1.00000000e+000, 4.23946765e-020, 1.90123695e-005,
+       9.99998334e-001, 9.99999714e-001, 2.86491160e-020, 7.36140300e-033,
+       1.00000000e+000, 1.59506117e-048, 2.76697304e-009, 1.55888069e-006,
+       6.81180497e-014, 8.57500115e-009, 1.00000000e+000, 9.99999647e-001,
+       1.14487436e-048, 9.99869123e-001, 1.00000000e+000, 4.65179111e-024,
+       7.99293187e-015, 2.85065542e-008, 3.55931041e-021, 3.54617355e-062,
+       9.99941713e-001, 9.99999753e-001, 8.45007087e-017, 9.96054387e-001,
+       2.12483893e-020, 1.61024298e-015, 8.04010766e-012, 7.78066661e-008,
+       1.00000000e+000, 1.05433696e-014, 9.99999995e-001, 8.38904227e-058,
+       9.99999434e-001, 9.99999906e-001, 1.88734911e-027, 6.41058701e-012,
+       9.99999962e-001, 1.10784301e-006, 9.99999777e-001, 2.16119177e-017,
+       9.81200724e-003, 3.90585525e-010, 2.61227059e-011, 4.58995925e-010,
+       5.76876670e-011, 8.71983330e-018, 1.00000000e+000, 2.90996895e-011,
+       9.79114396e-035, 1.00000000e+000, 4.92227021e-093, 3.40203837e-046,
+       9.96835102e-015, 9.99999925e-001, 1.00000000e+000, 9.99932916e-001,
+       1.00000000e+000, 3.41913370e-020, 9.57460055e-001, 1.00000000e+000,
+       1.00000000e+000, 1.42372424e-021, 9.99766727e-001, 3.44466902e-001,
+       4.75559456e-007, 9.99999997e-001, 1.13864060e-027, 9.99999997e-001,
+       2.80107156e-054, 7.74524333e-042, 1.00000000e+000, 3.89325408e-062,
+       1.14619363e-025, 6.51757145e-009, 1.00000000e+000, 9.27268671e-043,
+       3.62038030e-004, 9.99999983e-001, 7.86974000e-006, 2.21071718e-009,
+       1.33823339e-067, 1.35149331e-016, 2.25287450e-006, 6.64601008e-013,
+       1.28918459e-002, 2.18833122e-012, 1.00000000e+000, 8.98441591e-015,
+       3.45000156e-105])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">acc_nb</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">f1score</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Konfusi Matrix</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">cm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;precision: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;recall: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recall</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fscore: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f1score</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_nb</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Konfusi Matrix
+ [[438   1]
+ [  3 311]]
+precision: 99.5
+recall: 99.41
+fscore: 99.45
+accuracy: 99.47
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Predict input to Nive Bayes model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_input</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;6 1 32 43 67 78 86 98 109 122 137 156 168&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="c1"># list_input.append(&#39;50 0 120 289&#39;.split())</span>
+<span class="c1"># list_input.append(&#39;70 1 130 322&#39;.split())</span>
+<span class="c1"># list_input.append(&#39;67 0 115 564&#39;.split())</span>
+<span class="n">list_input</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;6&#39;,
+  &#39;1&#39;,
+  &#39;32&#39;,
+  &#39;43&#39;,
+  &#39;67&#39;,
+  &#39;78&#39;,
+  &#39;86&#39;,
+  &#39;98&#39;,
+  &#39;109&#39;,
+  &#39;122&#39;,
+  &#39;137&#39;,
+  &#39;156&#39;,
+  &#39;168&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>#input to model normalisasi</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-4b4cbf55-3d6a-4968-bcf0-da2287bf0b38">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3202</th>
+      <td>0.411857</td>
+      <td>0.201923</td>
+      <td>0.431632</td>
+      <td>0.168981</td>
+      <td>0.009725</td>
+      <td>0.000958</td>
+      <td>0.016720</td>
+      <td>0.355911</td>
+      <td>0.145127</td>
+      <td>0.591544</td>
+      <td>0.101937</td>
+      <td>0.941657</td>
+      <td>4.057407e-169</td>
+    </tr>
+    <tr>
+      <th>1135</th>
+      <td>0.215528</td>
+      <td>0.428803</td>
+      <td>0.643585</td>
+      <td>0.008348</td>
+      <td>0.096743</td>
+      <td>0.018110</td>
+      <td>0.041743</td>
+      <td>0.052148</td>
+      <td>0.006699</td>
+      <td>0.266099</td>
+      <td>0.201322</td>
+      <td>0.965428</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1501</th>
+      <td>0.415565</td>
+      <td>0.517418</td>
+      <td>0.710152</td>
+      <td>0.036227</td>
+      <td>0.040976</td>
+      <td>0.005653</td>
+      <td>0.056216</td>
+      <td>0.141729</td>
+      <td>0.029880</td>
+      <td>0.392557</td>
+      <td>0.189193</td>
+      <td>0.929059</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1301</th>
+      <td>0.078619</td>
+      <td>0.114534</td>
+      <td>0.317399</td>
+      <td>0.004659</td>
+      <td>0.149218</td>
+      <td>0.034841</td>
+      <td>0.007935</td>
+      <td>0.033094</td>
+      <td>0.003671</td>
+      <td>0.273041</td>
+      <td>0.115757</td>
+      <td>0.921572</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1220</th>
+      <td>0.364182</td>
+      <td>0.214880</td>
+      <td>0.446262</td>
+      <td>0.288207</td>
+      <td>0.017398</td>
+      <td>0.002006</td>
+      <td>0.032085</td>
+      <td>0.487971</td>
+      <td>0.258230</td>
+      <td>0.690250</td>
+      <td>0.097081</td>
+      <td>0.916158</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2594</th>
+      <td>0.477424</td>
+      <td>0.415984</td>
+      <td>0.633406</td>
+      <td>0.157974</td>
+      <td>0.022431</td>
+      <td>0.002541</td>
+      <td>0.046307</td>
+      <td>0.344875</td>
+      <td>0.137127</td>
+      <td>0.512013</td>
+      <td>0.196497</td>
+      <td>0.946570</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>586</th>
+      <td>0.312698</td>
+      <td>0.313537</td>
+      <td>0.545670</td>
+      <td>0.282230</td>
+      <td>0.042706</td>
+      <td>0.005750</td>
+      <td>0.081340</td>
+      <td>0.482596</td>
+      <td>0.253001</td>
+      <td>0.591055</td>
+      <td>0.228128</td>
+      <td>0.905751</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>2818</th>
+      <td>0.117340</td>
+      <td>0.223880</td>
+      <td>0.456166</td>
+      <td>0.002399</td>
+      <td>0.144301</td>
+      <td>0.033872</td>
+      <td>0.062582</td>
+      <td>0.019269</td>
+      <td>0.001893</td>
+      <td>0.191114</td>
+      <td>0.336584</td>
+      <td>0.890343</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>876</th>
+      <td>0.229312</td>
+      <td>0.252771</td>
+      <td>0.486691</td>
+      <td>0.279192</td>
+      <td>0.060537</td>
+      <td>0.009141</td>
+      <td>0.059268</td>
+      <td>0.479745</td>
+      <td>0.250249</td>
+      <td>0.633857</td>
+      <td>0.162044</td>
+      <td>0.944360</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>0.046878</td>
+      <td>0.030214</td>
+      <td>0.148828</td>
+      <td>0.788279</td>
+      <td>0.127427</td>
+      <td>0.027820</td>
+      <td>0.038165</td>
+      <td>0.871643</td>
+      <td>0.768768</td>
+      <td>0.804732</td>
+      <td>0.115788</td>
+      <td>0.845977</td>
+      <td>0.000000e+00</td>
+    </tr>
+  </tbody>
+</table>
+<p>753 rows × 13 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-4b4cbf55-3d6a-4968-bcf0-da2287bf0b38')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-4b4cbf55-3d6a-4968-bcf0-da2287bf0b38 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-4b4cbf55-3d6a-4968-bcf0-da2287bf0b38');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">pred_input</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">list_input</span><span class="p">)</span>
+<span class="n">pred_input</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pred_input</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">nama_fitur</span><span class="p">)</span>
+<span class="n">pred_input</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-d7f6f49f-ff73-4ce9-b641-5309d283f8e3">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean</th>
+      <th>Variance</th>
+      <th>Standard Deviation</th>
+      <th>Entropy</th>
+      <th>Skewness</th>
+      <th>Kurtosis</th>
+      <th>Contrast</th>
+      <th>Energy</th>
+      <th>ASM</th>
+      <th>Homogeneity</th>
+      <th>Dissimilarity</th>
+      <th>Correlation</th>
+      <th>Coarseness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-d7f6f49f-ff73-4ce9-b641-5309d283f8e3')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-d7f6f49f-ff73-4ce9-b641-5309d283f8e3 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-d7f6f49f-ff73-4ce9-b641-5309d283f8e3');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<p>#input to model naive bayes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nb</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filenameNB</span><span class="p">)</span>
+<span class="n">input_pred</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pred_input</span><span class="p">)</span>
+<span class="n">input_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>#inisialisasi model KNN</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="c1">#Try running from k=1 through 30 and record testing accuracy</span>
+<span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">scores_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+        <span class="c1"># install model</span>
+        <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+        <span class="c1"># save model</span>
+        <span class="n">filenameKNN</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/model/KNNmodel&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.pkl&#39;</span>
+        <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span><span class="n">filenameKNN</span><span class="p">)</span>
+        <span class="n">y_pred</span><span class="o">=</span><span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="n">scores</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">scores_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">))</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: 0.9853917662682603,
+ 2: 0.9946879150066401,
+ 3: 0.9920318725099602,
+ 4: 0.9960159362549801,
+ 5: 0.9933598937583001,
+ 6: 0.9933598937583001,
+ 7: 0.9933598937583001,
+ 8: 0.9933598937583001,
+ 9: 0.9933598937583001,
+ 10: 0.9933598937583001,
+ 11: 0.9933598937583001,
+ 12: 0.9946879150066401,
+ 13: 0.9933598937583001,
+ 14: 0.9933598937583001,
+ 15: 0.9933598937583001,
+ 16: 0.9946879150066401,
+ 17: 0.9946879150066401,
+ 18: 0.9946879150066401,
+ 19: 0.9946879150066401,
+ 20: 0.9946879150066401,
+ 21: 0.9946879150066401,
+ 22: 0.9946879150066401,
+ 23: 0.9946879150066401,
+ 24: 0.9960159362549801,
+ 25: 0.9946879150066401,
+ 26: 0.9960159362549801,
+ 27: 0.9946879150066401,
+ 28: 0.9946879150066401,
+ 29: 0.9946879150066401,
+ 30: 0.9946879150066401}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0,
+       0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1,
+       1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0,
+       1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+       1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1,
+       0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0,
+       1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0,
+       0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+       1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0,
+       1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+       1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0,
+       0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+       0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1,
+       0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0,
+       0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+       1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
+       1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+       1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1,
+       1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+       0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1,
+       0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0,
+       0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,
+       1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1,
+       1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,
+       0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1,
+       1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1,
+       0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0,
+       1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0,
+       0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0,
+       0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
+       1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+       0, 0, 1, 0, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Visualisasi Score</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#plot the relationship between K and the testing accuracy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_range</span><span class="p">,</span><span class="n">scores_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value of K for KNN&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Testing Accuracy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Testing Accuracy&#39;)
+</pre></div>
+</div>
+<img alt="_images/App_44_1.png" src="_images/App_44_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">scores_list</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span> <span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">scores_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 0.9960159362549801)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">scores_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">scores_list</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_knn</span> <span class="o">=</span><span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred_knn</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred_knn</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">f1score</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Konfusi Matrix</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">cm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;precision: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;recall: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recall</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fscore: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f1score</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Konfusi Matrix
+ [[439   0]
+ [  3 311]]
+precision: 99.66
+recall: 99.52
+fscore: 99.59
+accuracy: 99.6
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Implementasi pada input</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn5</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/model/KNNmodel5.pkl&#39;</span><span class="p">)</span>
+<span class="n">knn_pred</span> <span class="o">=</span> <span class="n">knn5</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pred_input</span><span class="p">)</span>
+<span class="n">knn_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Inisialisasi K-means Clustering
+Eksekusi Pada Model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="c1"># #Try running from n=1 through 30 and record testing accuracy</span>
+<span class="n">n_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">akurasi</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">akurasi_score</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">n_range</span><span class="p">:</span>
+        <span class="c1"># install model</span>
+        <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+        <span class="c1"># save model</span>
+        <span class="n">filenameKMeans</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/DATA MINING/tugas/model/modelKMeans&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.pkl&#39;</span>
+        <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">kmeans</span><span class="p">,</span><span class="n">filenameKMeans</span><span class="p">)</span>
+        <span class="n">y_pred</span><span class="o">=</span><span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="n">akurasi</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">akurasi_score</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">))</span>
+<span class="n">akurasi_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.5830013280212484,
+ 0.9641434262948207,
+ 0.09428950863213811,
+ 0.009296148738379814,
+ 0.3891102257636122,
+ 0.0,
+ 0.21646746347941567,
+ 0.03718459495351926,
+ 0.22709163346613545,
+ 0.20451527224435592,
+ 0.14741035856573706,
+ 0.19256308100929614,
+ 0.0,
+ 0.0013280212483399733,
+ 0.0,
+ 0.2058432934926959,
+ 0.1407702523240372,
+ 0.09428950863213811,
+ 0.11155378486055777,
+ 0.11155378486055777,
+ 0.0,
+ 0.10756972111553785,
+ 0.10358565737051793,
+ 0.0,
+ 0.08764940239043825,
+ 0.08233731739707835,
+ 0.0,
+ 0.04648074369189907,
+ 0.057104913678618856,
+ 0.08366533864541832]
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Visualisasi Hasil K-means</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#plot the relationship between K and the testing accuracy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_range</span><span class="p">,</span><span class="n">akurasi_score</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value of K for K-means&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Testing Accuracy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Testing Accuracy&#39;)
+</pre></div>
+</div>
+<img alt="_images/App_52_1.png" src="_images/App_52_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">akurasi_score</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">akurasi_score</span><span class="p">))</span> <span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">akurasi_score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 0.9641434262948207)
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Inisialisasi Decision three</p>
+<p>Eksekusi pada model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="n">dtc</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span> <span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">dtc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeClassifier(max_depth=12, random_state=42)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Decision three rules text</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import relevant functions</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">export_text</span>
+<span class="c1">#export the decision rules</span>
+<span class="n">tree_rules</span> <span class="o">=</span> <span class="n">export_text</span><span class="p">(</span><span class="n">dtc</span><span class="p">,</span>
+                        <span class="n">feature_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nama_fitur</span><span class="p">))</span>
+<span class="c1">#print the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tree_rules</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|--- Entropy &lt;= 0.13
+|   |--- Kurtosis &lt;= 0.00
+|   |   |--- Standard Deviation &lt;= 0.63
+|   |   |   |--- Dissimilarity &lt;= 0.11
+|   |   |   |   |--- class: 1
+|   |   |   |--- Dissimilarity &gt;  0.11
+|   |   |   |   |--- class: 0
+|   |   |--- Standard Deviation &gt;  0.63
+|   |   |   |--- class: 1
+|   |--- Kurtosis &gt;  0.00
+|   |   |--- Kurtosis &lt;= 0.00
+|   |   |   |--- Mean &lt;= 0.54
+|   |   |   |   |--- Dissimilarity &lt;= 0.11
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- Dissimilarity &gt;  0.11
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- Mean &gt;  0.54
+|   |   |   |   |--- class: 1
+|   |   |--- Kurtosis &gt;  0.00
+|   |   |   |--- class: 1
+|--- Entropy &gt;  0.13
+|   |--- Homogeneity &lt;= 0.52
+|   |   |--- Skewness &lt;= 0.07
+|   |   |   |--- Entropy &lt;= 0.16
+|   |   |   |   |--- class: 1
+|   |   |   |--- Entropy &gt;  0.16
+|   |   |   |   |--- class: 0
+|   |   |--- Skewness &gt;  0.07
+|   |   |   |--- class: 1
+|   |--- Homogeneity &gt;  0.52
+|   |   |--- Variance &lt;= 0.55
+|   |   |   |--- Kurtosis &lt;= 0.03
+|   |   |   |   |--- Contrast &lt;= 0.15
+|   |   |   |   |   |--- Homogeneity &lt;= 0.58
+|   |   |   |   |   |   |--- Correlation &lt;= 0.94
+|   |   |   |   |   |   |   |--- Homogeneity &lt;= 0.58
+|   |   |   |   |   |   |   |   |--- Standard Deviation &lt;= 0.70
+|   |   |   |   |   |   |   |   |   |--- Contrast &lt;= 0.09
+|   |   |   |   |   |   |   |   |   |   |--- Homogeneity &lt;= 0.57
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- Homogeneity &gt;  0.57
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |--- Contrast &gt;  0.09
+|   |   |   |   |   |   |   |   |   |   |--- Entropy &lt;= 0.21
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- Entropy &gt;  0.21
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- Standard Deviation &gt;  0.70
+|   |   |   |   |   |   |   |   |   |--- Entropy &lt;= 0.15
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- Entropy &gt;  0.15
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- Homogeneity &gt;  0.58
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- Correlation &gt;  0.94
+|   |   |   |   |   |   |   |--- Energy &lt;= 0.37
+|   |   |   |   |   |   |   |   |--- Contrast &lt;= 0.03
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- Contrast &gt;  0.03
+|   |   |   |   |   |   |   |   |   |--- Skewness &lt;= 0.06
+|   |   |   |   |   |   |   |   |   |   |--- Homogeneity &lt;= 0.53
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- Homogeneity &gt;  0.53
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |--- Skewness &gt;  0.06
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- Energy &gt;  0.37
+|   |   |   |   |   |   |   |   |--- Mean &lt;= 0.59
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |--- Mean &gt;  0.59
+|   |   |   |   |   |   |   |   |   |--- Kurtosis &lt;= 0.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- Kurtosis &gt;  0.00
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Homogeneity &gt;  0.58
+|   |   |   |   |   |   |--- Contrast &lt;= 0.09
+|   |   |   |   |   |   |   |--- ASM &lt;= 0.13
+|   |   |   |   |   |   |   |   |--- Skewness &lt;= 0.03
+|   |   |   |   |   |   |   |   |   |--- Entropy &lt;= 0.15
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- Entropy &gt;  0.15
+|   |   |   |   |   |   |   |   |   |   |--- Standard Deviation &lt;= 0.53
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |   |--- Standard Deviation &gt;  0.53
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- Skewness &gt;  0.03
+|   |   |   |   |   |   |   |   |   |--- ASM &lt;= 0.11
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- ASM &gt;  0.11
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- ASM &gt;  0.13
+|   |   |   |   |   |   |   |   |--- Homogeneity &lt;= 0.61
+|   |   |   |   |   |   |   |   |   |--- Homogeneity &lt;= 0.61
+|   |   |   |   |   |   |   |   |   |   |--- Kurtosis &lt;= 0.01
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- Kurtosis &gt;  0.01
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |--- Homogeneity &gt;  0.61
+|   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- Homogeneity &gt;  0.61
+|   |   |   |   |   |   |   |   |   |--- Kurtosis &lt;= 0.01
+|   |   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |   |   |--- Kurtosis &gt;  0.01
+|   |   |   |   |   |   |   |   |   |   |--- Skewness &lt;= 0.04
+|   |   |   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |   |   |--- Skewness &gt;  0.04
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |--- Contrast &gt;  0.09
+|   |   |   |   |   |   |   |--- Correlation &lt;= 0.91
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- Correlation &gt;  0.91
+|   |   |   |   |   |   |   |   |--- Contrast &lt;= 0.11
+|   |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |   |--- Contrast &gt;  0.11
+|   |   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Contrast &gt;  0.15
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- Kurtosis &gt;  0.03
+|   |   |   |   |--- Correlation &lt;= 0.88
+|   |   |   |   |   |--- Contrast &lt;= 0.14
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Contrast &gt;  0.14
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- Correlation &gt;  0.88
+|   |   |   |   |   |--- Dissimilarity &lt;= 0.07
+|   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- Dissimilarity &gt;  0.07
+|   |   |   |   |   |   |--- class: 1
+|   |   |--- Variance &gt;  0.55
+|   |   |   |--- Homogeneity &lt;= 0.54
+|   |   |   |   |--- Kurtosis &lt;= 0.00
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Kurtosis &gt;  0.00
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- Homogeneity &gt;  0.54
+|   |   |   |   |--- Kurtosis &lt;= 0.00
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- Kurtosis &gt;  0.00
+|   |   |   |   |   |--- Correlation &lt;= 0.95
+|   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |--- Correlation &gt;  0.95
+|   |   |   |   |   |   |--- class: 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rules decision three plot diagram</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import relevant packages</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#plt the figure, setting a black background</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">facecolor</span> <span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="c1">#create the tree plot</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">dtc</span><span class="p">,</span><span class="n">feature_names</span> <span class="o">=</span> <span class="n">nama_fitur</span><span class="p">,</span><span class="n">class_names</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">rounded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="c1">#show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/App_60_0.png" src="_images/App_60_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sdtc_pred</span> <span class="o">=</span> <span class="n">dtc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">Sdtc_pred</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0,
+       0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1,
+       1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0,
+       1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+       1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1,
+       0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0,
+       1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0,
+       0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+       1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0,
+       1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+       1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0,
+       0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+       0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1,
+       0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0,
+       0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+       1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
+       1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+       1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1,
+       1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+       0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1,
+       0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0,
+       0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,
+       1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1,
+       1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1,
+       0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1,
+       1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1,
+       0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0,
+       1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0,
+       0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0,
+       0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
+       1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+       1, 0, 1, 0, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm_dtc</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">Sdtc_pred</span><span class="p">)</span>
+<span class="n">precision_dtc</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">Sdtc_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">acc_dtc</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">Sdtc_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">recall_dtc</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">Sdtc_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">f1score_dtc</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">Sdtc_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Konfusi Matrix</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">cm_dtc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;precision: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision_dtc</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;recall: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recall_dtc</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fscore: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f1score_dtc</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_dtc</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Konfusi Matrix
+ [[433   6]
+ [  1 313]]
+precision: 98.94
+recall: 99.16
+fscore: 99.05
+accuracy: 99.07
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Fahad Alfan Danny<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
